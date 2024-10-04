@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+ <header>
+        <h1>Destination Management</h1>
+    </header>
+  <h2>Create New Destination</h2>
+            <form action="{% url 'create_destination' %}" method="POST">
+                {% csrf_token %}
+                <label for="destination-name">Destination Name:</label>
+                <input type="text" id="destination-name" name="place_name" required>
+
+                    <label for="state">:</label>
+                <input type="text" id="state" name="location_state">
+
+                <label for="location_district">New Location:</label>
+                <input type="text" id="district" name="location_district">
+
+                  <label for="google_map_link">New Location:</label>
+                <input type="url" id="google_map_link" name="google_map_link">
+
+                  <label for="images"> Location:</label>
+                <input type="image" id="images" name="image">
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+
+
+                <button type="submit">Create Destination</button>
+            </form>
+</body>
+</html>

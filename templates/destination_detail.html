@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{{ destination.place_name }}</title>
+</head>
+<body>
+{% block content %}
+    <h1>{{ destination.place_name }}</h1>
+    <img src="{{destination.image}}" alt="{{ destination.place_name }}">
+    <p>Weather: {{ destination.weather }}</p>
+    <p>Location: {{ destination.location_state }}, {{ destination.location_district }}</p>
+    <p>Description: {{ destination.description }}</p>
+    <a href="{% url 'update_destination_form' destination.id %}">Edit</a>
+    <form action="{% url 'destination_delete' destination.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'index' %}">Back to List</a>
+{% endblock %}
+</body>
+</html>

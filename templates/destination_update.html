@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Management</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Destination Management</h1>
+    </header>
+    <main>
+
+            <h2>Update Existing Destination</h2>
+
+            <form action="{% url 'update_destination' destination.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <label for="place_name">New Destination Name:</label>
+                <input type="text" id="place_name" name="place_name" value="{{destination.place_name}}">
+
+                 <label for="weather">weather:</label>
+                <input type="text" id="weather" name="weather" value="{{destination.weather}}">
+
+                
+                <label for="location_state">State:</label>
+                <input type="text" id="location_state" name="location_state" value="{{destination.location_state}}">
+
+                <label for="location_district">District:</label>
+                <input type="text" id="location_district" name="location_district" value="{{destination.location_district}}">
+
+                  <label for="google_map_link">Location:</label>
+                <input type="url" id="google_map_link" name="google_map_link" value="{{destination.google_map_link}}">
+
+                  <label for="image">Image:</label>
+                <input type="file" id="image" name="image">
+
+                <label for="new-description">New Description:</label>
+                <textarea id="new-description" name="description">{{destination.description}}</textarea>
+                
+                <button type="submit">Update Destination</button>
+            </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Destination Management System</p>
+    </footer>
+</body>
+</html>
